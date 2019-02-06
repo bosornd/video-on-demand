@@ -40,8 +40,12 @@ module.exports = {
       }
     }
   },
-  serverMiddleware: ['~/api/index.js'],
   modules: ['@nuxtjs/axios'],
   axios: {
+    proxy: true
+  },
+  proxy: {
+    '/api/movies': { target: `http://${process.env.MOVIE_DB_API_SERVICE_HOST}:${process.env.MOVIE_DB_API_SERVICE_PORT}`,
+                   pathRewrite: { '^/api/movies' : '/' }  }
   }
 }

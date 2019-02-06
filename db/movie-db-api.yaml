@@ -1,0 +1,95 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-db
+  labels:
+    svc: movie-db
+spec:
+  selector:
+    matchLabels:
+      svc: movie-db
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        svc: movie-db
+    spec:
+      containers:
+      - name: movie-db
+        image: mongo
+        ports:
+        - containerPort: 27017
+        volumeMounts:
+        - name: movie-db-storage
+          mountPath: /data/db
+        - name: host
+          mountPath: /host
+      volumes:
+      - name: movie-db-storage
+        persistentVolumeClaim:
+          claimName: movie-db-pvc
+      - name: host
+        hostPath:
+          path: /c/Users/drajin/minikube/movie-db
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: movie-db
+  labels:
+    svc: movie-db
+spec:
+  ports:
+    - port: 27017
+      targetPort: 27017
+  selector:
+    svc: movie-db
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: movie-db-pvc
+  labels:
+    svc: movie-db
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-db-api
+  labels:
+    svc: movie-db-api
+spec:
+  selector:
+    matchLabels:
+      svc: movie-db-api
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        svc: movie-db-api
+    spec:
+      containers:
+      - name: movie-db-api
+        image: movie-db-api:v1
+        ports:
+        - containerPort: 8080
+        imagePullPolicy: Never
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: movie-db-api
+  labels:
+    svc: movie-db-api
+spec:
+  ports:
+  - port: 8080
+  selector:
+    svc: movie-db-api
+  type: LoadBalancer
