@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  async asyncData({ params, $axios }) {
+  async asyncData ({ params, $axios }) {
     const movie = await $axios.$get('/api/movies/' + params.index)
     console.log(movie)
     return {

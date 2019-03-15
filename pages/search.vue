@@ -42,7 +42,7 @@ export default {
     }
   },
   methods: {
-    async search(){
+    async search () {
       console.log(this.title)
       this.searched = await this.$axios.$get('/api/movies/search?text=' + this.title)
     }

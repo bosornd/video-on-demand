@@ -44,9 +44,9 @@ export default {
       ]
     }
   },
-  async asyncData({ params, $axios }) {
-    const latest = await $axios.$get('/api/movies/latest?genres.name='+params.index)
-    const ranked = await $axios.$get('/api/movies/ranked?genres.name='+params.index)
+  async asyncData ({ params, $axios }) {
+    const latest = await $axios.$get('/api/movies/latest?genres.name=' + params.index)
+    const ranked = await $axios.$get('/api/movies/ranked?genres.name=' + params.index)
     return {
       latest,
       ranked
