@@ -44,7 +44,7 @@ export default {
       ]
     }
   },
-  async asyncData({ $axios }) {
+  async asyncData ({ $axios }) {
     const latest = await $axios.$get('/api/movies/latest')
     const ranked = await $axios.$get('/api/movies/ranked')
     return {
