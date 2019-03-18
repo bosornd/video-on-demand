@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-layout column>
-      <v-flex xs12>latest movies</v-flex>
+      <v-flex xs12>movies</v-flex>
       <v-flex xs12>
         <v-data-table v-model="selected" :headers="headers" :items="latest"
           item-key="title" select-all class="elevation-1" :disable-initial-sort="true">
