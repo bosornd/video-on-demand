@@ -7,7 +7,38 @@
       :src="item.src"
     ></v-carousel-item>
   </v-carousel>
+  <v-tabs
+  centered
+  color="white"
+  icons-and-text
+  >
+    <v-tabs-slider color="white"></v-tabs-slider>
 
+    <v-tab href="#tab-1">
+      무료
+      <v-icon>business_center</v-icon>
+    </v-tab>
+
+    <v-tab href="#tab-2">
+      실시간
+      <v-icon>timer</v-icon>
+    </v-tab>
+
+    <v-tab href="#tab-3">
+      영화
+      <v-icon>movie_creation</v-icon>
+    </v-tab>
+
+    <v-tab-item
+      v-for="i in 3"
+      :key="i"
+      :value="'tab-' + i"
+    >
+      <v-card flat>
+        <v-card-text>{{ text }}</v-card-text>
+      </v-card>
+    </v-tab-item>
+  </v-tabs>
   <v-container>
     <v-layout row wrap>
       <v-flex xs12 sm 12 md12>
@@ -220,7 +251,6 @@
         </v-container>
       </v-window-item>
     </v-window>
-
     </v-container>
   </div>
 </template>
@@ -234,16 +264,13 @@ export default {
     window3: 0,
     items: [
       {
-        src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg'
+        src: 'https://gdurl.com/u4qG'
       },
       {
-        src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg'
+        src: 'https://gdurl.com/79Eq'
       },
       {
-        src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg'
-      },
-      {
-        src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg'
+        src: 'https://gdurl.com/M1Yc'
       }
     ]
   }),
