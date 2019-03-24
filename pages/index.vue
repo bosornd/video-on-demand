@@ -264,13 +264,13 @@ export default {
     window3: 0,
     items: [
       {
-        src: 'https://gdurl.com/u4qG'
+        src: 'https://gdurl.com/yHOz'
       },
       {
-        src: 'https://gdurl.com/79Eq'
+        src: 'https://gdurl.com/zQH3'
       },
       {
-        src: 'https://gdurl.com/M1Yc'
+        src: 'https://gdurl.com/Sqwc'
       }
     ]
   }),
