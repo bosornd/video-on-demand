@@ -56,14 +56,9 @@
        <v-btn flat><h3>로그인</h3></v-btn>
      </v-toolbar-items>
     </v-toolbar>
-
     <v-content>
-      <v-container>
         <nuxt />
-      </v-container>
-    </v-content>
-
-
+      </v-content>
     <v-footer :fixed="fixed" app>
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
@@ -78,6 +73,7 @@
         clipped: true,
         miniVariant: false,
         title: 'Simple Video-on-Demand Example'
+
       }
     },
     computed: {
