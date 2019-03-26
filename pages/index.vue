@@ -39,73 +39,76 @@
       </v-card>
     </v-tab-item>
   </v-tabs>
-  <v-container>
-    <v-layout row wrap>
-      <v-flex xs12 sm 12 md12>
-        <v-container fluid grid-list-md>
-          <v-layout align-center justify-center row fill-height>
-            <v-flex xs8 sm8 md8>
-              <div><h1>투데이! Vod</h1></div>
-            </v-flex>
-            <v-flex xs4 sm4 md4>
-              <v-item-group
-                v-model="window1"
-                class="text-xs-right"
-                mandatory
-                max="5"
-              >
-                <v-item v-for="n in length" :key="n">
+  <div class="grey lighten-3">
+    <v-container>
+      <v-layout row wrap>
+        <v-flex xs12 sm 12 md12>
+          <v-container fluid grid-list-md>
+            <v-layout align-center justify-center row fill-height>
+              <v-flex xs8 sm8 md8>
+                <div><h1>투데이! Vod</h1></div>
+              </v-flex>
+              <v-flex xs4 sm4 md4>
+                <v-item-group
+                  v-model="window1"
+                  class="text-xs-right"
+                  mandatory
+                  max="5"
+                >
+                  <v-item v-for="n in length" :key="n">
 
-                  <v-icon
-                  slot-scope="{active,toggle}"
-                  :input-value="active"
-                  icon
-                  @click="toggle">fiber_manual_record</v-icon>
+                    <v-icon
+                    slot-scope="{active,toggle}"
+                    :input-value="active"
+                    icon
+                    :color="active ? 'black' : 'grey'"
+                    @click="toggle">fiber_manual_record</v-icon>
 
-                </v-item>
-              </v-item-group>
-            </v-flex>
-          </v-layout>
-        </v-container>
-      </v-flex>
-    </v-layout>
-    <v-window
-      v-model="window1"
-      horizontal
-    >
-      <v-window-item
-        v-for="i in length"
-        :key="'${i}'"
-         xs6 sm6 md4
+                  </v-item>
+                </v-item-group>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-flex>
+      </v-layout>
+      <v-window
+        v-model="window1"
+        horizontal
       >
-        <v-container fluid grid-list-md>
-          <v-layout row wrap>
-            <v-flex v-for="card in latest.slice(6*(i-1),6*i)" :key="card.title" xs6 sm6 md4>
-              <v-card height=420px ripple>
-                <v-img :src="'http://image.tmdb.org/t/p/w185/' + card.poster" height=340px>
-                <v-container fill-height align-front>
-                  <v-layout align-end fill-height>
-                    <v-flex>
-                      <span class="headline white--text" v-text="card.title"></span>
-                      </v-flex>
-                    </v-layout>
-                  </v-container>
-                </v-img>
-                <v-card-title primary title>
-                  <div>
-                    <span><h3>{{card.title}} ({{card.released_date}})</h3></span>
-                    <span class="grey--text">{{card.description.slice(0,50)}}...</span><br>
-                  </div>
-                </v-card-title>
-              </v-card>
-            </v-flex>
-          </v-layout>
-        </v-container>
-      </v-window-item>
-    </v-window>
+        <v-window-item
+          v-for="i in length"
+          :key="'${i}'"
+           xs6 sm6 md4
+        >
+          <v-container fluid grid-list-md>
+            <v-layout row wrap>
+              <v-flex v-for="card in latest.slice(6*(i-1),6*i)" :key="card.title" xs12 sm6 md4>
+                <v-card height=420px ripple>
+                  <v-img :src="'http://image.tmdb.org/t/p/w185/' + card.poster" height=340px>
+                  <v-container fill-height align-front>
+                    <v-layout align-end fill-height>
+                      <v-flex>
+                        <span class="headline white--text" v-text="card.title"></span>
+                        </v-flex>
+                      </v-layout>
+                    </v-container>
+                  </v-img>
+                  <v-card-title primary title>
+                    <div>
+                      <span><h3>{{card.title}} ({{card.released_date}})</h3></span>
+                      <span class="grey--text">{{card.description.slice(0,50)}}...</span><br>
+                    </div>
+                  </v-card-title>
+                </v-card>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-window-item>
+      </v-window>
+    </v-container>
+  </div>
 
-
-
+  <v-container>
     <v-layout row wrap>
       <v-flex xs12 sm 12 md12>
         <v-container fluid grid-list-md>
@@ -124,6 +127,7 @@
                   <v-icon
                     slot-scope="{active,toggle}"
                     :input-value="active"
+                    :color="active ? 'black' : 'grey'"
                     icon
                     @click="toggle">fiber_manual_record
                   </v-icon>
@@ -145,7 +149,7 @@
       >
         <v-container fluid grid-list-md>
           <v-layout row wrap>
-            <v-flex v-for="card in latest.slice(6*(j-1),6*j)" :key="card.title" xs4 sm4 md2>
+            <v-flex v-for="card in latest.slice(6*(j-1),6*j)" :key="card.title" xs12 sm4 md2>
               <v-hover>
                 <v-card
                   slot-scope="{ hover }"
@@ -197,6 +201,7 @@
                   <v-icon
                     slot-scope="{active,toggle}"
                     :input-value="active"
+                    :color="active ? 'black' : 'grey'"
                     icon
                     @click="toggle">fiber_manual_record
                   </v-icon>
@@ -218,7 +223,7 @@
       >
         <v-container fluid grid-list-md>
           <v-layout row wrap>
-            <v-flex v-for="card in ranked.slice(6*(j-1),6*j)" :key="card.title" xs4 sm4 md2>
+            <v-flex v-for="card in ranked.slice(6*(j-1),6*j)" :key="card.title" xs12 sm4 md2>
               <v-hover>
                 <v-card
                   slot-scope="{ hover }"

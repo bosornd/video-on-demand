@@ -58,7 +58,7 @@
     </v-toolbar>
     <v-content>
         <nuxt />
-      </v-content>
+    </v-content>
     <v-footer :fixed="fixed" app>
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
