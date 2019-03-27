@@ -113,9 +113,10 @@
                     slot-scope="{ active, toggle }"
                     :input-value="active"
                     icon
+                    :color="active ? 'black' : 'grey'"
                     @click="toggle"
                   >
-                    <v-icon>mdi-record</v-icon>
+                    <v-icon >mdi-record</v-icon>
                   </v-btn>
                 </v-item>
               </v-item-group>

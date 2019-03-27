@@ -28,16 +28,6 @@
       영화
       <v-icon>movie_creation</v-icon>
     </v-tab>
-
-    <v-tab-item
-      v-for="i in 3"
-      :key="i"
-      :value="'tab-' + i"
-    >
-      <v-card flat>
-        <v-card-text>{{ text }}</v-card-text>
-      </v-card>
-    </v-tab-item>
   </v-tabs>
   <div class="grey lighten-3">
     <v-container>
