@@ -45,7 +45,7 @@
         <v-flex xs12 sm 12 md12>
           <v-container fluid grid-list-md>
             <v-layout align-center justify-center row fill-height>
-              <v-flex xs8 sm8 md8>
+              <v-flex xs12 sm8 md8>
                 <div><h1>투데이! Vod</h1></div>
               </v-flex>
               <v-flex xs4 sm4 md4>
@@ -62,6 +62,7 @@
                     :input-value="active"
                     icon
                     :color="active ? 'black' : 'grey'"
+                    class="hidden-xs-and-down"
                     @click="toggle">fiber_manual_record</v-icon>
 
                   </v-item>

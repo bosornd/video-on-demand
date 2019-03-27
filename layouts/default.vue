@@ -72,7 +72,7 @@
         drawer: false,
         clipped: true,
         miniVariant: false,
-        title: 'Simple Video-on-Demand Example'
+        title: 'oksusu'
 
       }
     },
