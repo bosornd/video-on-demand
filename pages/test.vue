@@ -6,17 +6,25 @@
 
 
 
+      <v-card>
+        <v-container
+          fluid
+          grid-list-md
+
+        >
+
+
           <v-layout row wrap>
             <v-flex
               v-for="card in latest"
               :key="card.title"
-              xs6 sm4 md3
+              xs12 sm6 md4
               v-bind="{ [`xs${card.flex}`]: true }"
             >
               <v-card>
                 <v-img
                   :src="'http://image.tmdb.org/t/p/w185/' + card.poster"
-                  height="370px"
+                  height="200px"
                 >
 
 
@@ -26,13 +34,16 @@
                     pa-2
                   >
                     <v-layout align-end fill-height>
+                      <v-flex >
+                        <span class="headline white--text" v-text="card.title"></span>
+                      </v-flex>
                     </v-layout>
 
                   </v-container>
                 </v-img>
                 <v-card-title primary-title>
                          <div>
-                           {{card.title}}
+                           {{card.description}}
                            <div> {{ card_text }} </div>
                          </div>
                        </v-card-title>
@@ -42,7 +53,8 @@
               </v-card>
             </v-flex>
           </v-layout>
-
+        </v-container>
+      </v-card>
     </v-flex>
 
   </v-layout>
