@@ -45,14 +45,12 @@
     <v-toolbar class="yellow accent-4" fixed app :clipped-left="clipped">
       <v-toolbar-side-icon @click="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-items class="hidden-sm-and-down">
-       <v-btn flat><h3>랭킹</h3></v-btn>
        <v-btn flat><h3>MY</h3></v-btn>
       </v-toolbar-items>
       <v-spacer></v-spacer>
-      <v-toolbar-title><b><h2>{{title}}</h2></b></v-toolbar-title>
+      <nuxt-link :to="'/'" class="link"><v-toolbar-title><b><h2>{{title}}</h2></b></v-toolbar-title></nuxt-link>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
-       <v-btn flat><h3>이벤트</h3></v-btn>
        <v-btn flat><h3>로그인</h3></v-btn>
      </v-toolbar-items>
     </v-toolbar>
@@ -95,3 +93,12 @@
     }
   }
 </script>
+</script>
+
+<style>
+
+ a:link { color: black; text-decoration: none;}
+ a:visited { color: black; text-decoration: none;}
+ a:hover { color: black; text-decoration: none;}
+
+</style>
