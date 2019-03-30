@@ -1,9 +1,6 @@
 <template>
   <div>
-    <v-card class="header" height=30 color="grey darken-3">
-      <p><span class="py-2 ml-4 mr-2" style="line-height:2.3; color:white;">공지사항</span>
-        <span style="color:#A4A4A4;">인기영화, 드라마, 오리지널 콘텐츠를 oksusu에서 Full HD(1080P)로 즐겨보세요.2019.03.26</span></p>
-    </v-card>
+    <notice></notice>
     <v-carousel>
       <v-carousel-item
         v-for="(item,i) in items"
@@ -28,8 +25,8 @@
         <v-icon>timer</v-icon>
       </v-tab>
 
-    <v-tab href="#tab-3">
-      영화
+      <v-tab href="#tab-3">
+        영화
       <v-icon>movie_creation</v-icon>
     </v-tab>
   </v-tabs>
@@ -258,6 +255,7 @@
 </template>
 
 <script>
+import notice from '~/components/notice.vue'
 export default {
   data: () => ({
     length: 5,
@@ -279,7 +277,9 @@ export default {
       }
     ]
   }),
-
+  components: {
+    notice
+  },
   async asyncData ({ $axios }) {
     const latest = await $axios.$get('/api/movies/latest')
     const ranked = await $axios.$get('/api/movies/ranked')
@@ -292,13 +292,6 @@ export default {
 </script>
 
 <style scoped="">
-.header {
-  position: fixed;
-  top: 20;
-  background: #DD3543;
-  z-index: 4;
-  width: 100%;
-}
 .v-card--reveal {
   align-items: center;
   bottom: 0;
