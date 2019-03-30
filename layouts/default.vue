@@ -50,7 +50,7 @@
       <v-spacer></v-spacer>
       <nuxt-link :to="'/'" class="link"><v-toolbar-title><b><h2>{{title}}</h2></b></v-toolbar-title></nuxt-link>
       <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-sm-and-down">
+      <v-toolbar-items>
        <v-btn flat><h3>로그인</h3></v-btn>
      </v-toolbar-items>
     </v-toolbar>

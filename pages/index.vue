@@ -15,20 +15,10 @@
     >
       <v-tabs-slider color="white"></v-tabs-slider>
 
-      <v-tab href="#tab-1">
-        무료
-        <v-icon>business_center</v-icon>
+      <v-tab v-for="tab in tabs" :to="tab.to">
+        {{tab.title}}
+        <v-icon>{{tab.icon}}</v-icon>
       </v-tab>
-
-      <v-tab href="#tab-2">
-        실시간
-        <v-icon>timer</v-icon>
-      </v-tab>
-
-      <v-tab href="#tab-3">
-        영화
-      <v-icon>movie_creation</v-icon>
-    </v-tab>
   </v-tabs>
   <div class="grey lighten-3">
     <v-container>
@@ -258,7 +248,7 @@
 import notice from '~/components/notice.vue'
 export default {
   data: () => ({
-    length: 5,
+    // length: 5,
     window1: 0,
     window2: 0,
     window3: 0,
@@ -275,10 +265,39 @@ export default {
       {
         src: 'https://gdurl.com/M8vn'
       }
+    ],
+    tabs: [
+      {
+        title: '무료',
+        icon: 'business_center',
+        to: '/'
+      },
+      {
+        title: '실시간',
+        icon: 'timer',
+        to: '/'
+      },
+      {
+        title: '영화',
+        icon: 'movie_creation',
+        to: '/genre/Action'
+      }
+
     ]
   }),
   components: {
     notice
+  },
+  computed: {
+    length ({ $vuetify }) {
+      if ($vuetify.breakpoint.xs === true) {
+        return 3
+      } else if ($vuetify.breakpoint.sm === true) {
+        return 4
+      } else if ($vuetify.breakpoint.mdAndUp === true) {
+        return 5
+      }
+    }
   },
   async asyncData ({ $axios }) {
     const latest = await $axios.$get('/api/movies/latest')
