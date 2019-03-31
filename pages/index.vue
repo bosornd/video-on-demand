@@ -64,7 +64,7 @@
         >
           <v-container fluid grid-list-md>
             <v-layout row wrap>
-              <v-flex v-for="card in latest.slice(6*(i-1),6*i)" :key="card.title" xs12 sm6 md4>
+              <v-flex v-for="card in latest.slice(6*(i-1)+6,6*i+6)" :key="card.title" xs12 sm6 md4>
                 <v-card height=420px ripple :to="'/movie/' + card._id">
                   <v-img :src="card.poster" height=340px>
                   <v-container fill-height align-front>

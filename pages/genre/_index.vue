@@ -22,7 +22,7 @@
           </v-tabs>
         </v-flex>
         <v-flex
-          v-for="(card) in latest.slice(0, 20)"
+          v-for="(card) in ranked.slice(0, 20)"
           :key="card.title"
           xs6 sm4 md3
 
