@@ -22,7 +22,7 @@
           </v-tabs>
         </v-flex>
         <v-flex
-          v-for="(card) in latest"
+          v-for="(card) in latest.slice(0, 20)"
           :key="card.title"
           xs6 sm4 md3
 
@@ -34,7 +34,7 @@
             nuxt-link :to="'/movie/' + card._id"
             boolean flat false>
               <v-img
-                :src="'http://image.tmdb.org/t/p/w185/' + card.poster"
+                :src="card.poster"
                 height="370px"
               >
               <v-transition class="fade-transition">

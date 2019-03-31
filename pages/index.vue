@@ -66,7 +66,7 @@
             <v-layout row wrap>
               <v-flex v-for="card in latest.slice(6*(i-1),6*i)" :key="card.title" xs12 sm6 md4>
                 <v-card height=420px ripple :to="'/movie/' + card._id">
-                  <v-img :src="'http://image.tmdb.org/t/p/w185/' + card.poster" height=340px>
+                  <v-img :src="card.poster" height=340px>
                   <v-container fill-height align-front>
                     <v-layout align-end fill-height>
                       <v-flex>
@@ -140,7 +140,7 @@
                   height="360"
                   :to="'/movie/' + card._id"
                 >
-                  <v-img :src="'http://image.tmdb.org/t/p/w185/'+card.poster" height=360px>
+                  <v-img :src="card.poster" height=360px>
                     <v-transition class="fade-transition">
                       <div
                         v-if="hover"
@@ -215,7 +215,7 @@
                   height="360"
                   :to="'/movie/' + card._id"
                 >
-                  <v-img :src="'http://image.tmdb.org/t/p/w185/'+card.poster" height=360px>
+                  <v-img :src="card.poster" height=360px>
                     <v-transition class="fade-transition">
                       <div
                         v-if="hover"
