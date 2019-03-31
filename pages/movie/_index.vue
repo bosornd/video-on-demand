@@ -25,10 +25,12 @@
 
               <v-card color="grey lighten-3">
                 <v-card-title>
-                  <strong>Genres</strong>&nbsp;
-                  <v-text v-for="(genre,i) in movie.genres" :key="i">{{genre.name}} &nbsp;</v-text>
-                  |&nbsp;<strong>Release Date</strong>&nbsp;{{movie.released_date}}
-                  |&nbsp;<strong>Running Time</strong>&nbsp;{{movie.running_time}} min
+                  <div>
+                    <strong class="mr-2">Genres</strong>
+                    <span v-text class="mr-2" v-for="(genre,i) in movie.genres" :key="i">{{genre.name}}</v-text></span>
+                    |<strong class="ma-2">Release Date</strong>{{movie.released_date}}
+                    |<strong class="ma-2">Running Time</strong>{{movie.running_time}} min
+                  </div>
                 </v-card-title>
 
                 <v-card-actions>
@@ -56,7 +58,7 @@
             </v-layout>
             <v-container fluid id="scroll-target" class="scroll-y" style="max-height: 1000px">
               <v-layout
-                v-scroll:#scroll-target="onScroll"
+                v-scroll
                 column
                 align-center
                 justify-center
@@ -69,14 +71,14 @@
                           <v-card slot-scope="{ hover }" class="mx-auto">
                             <nuxt-link :to="'/movie/' + card._id">
                               <v-img :src="'http://image.tmdb.org/t/p/w185/' + card.poster">
-                                <v-transition class="fade-transition">
+                                <transition class="fade-transition">
                                   <div
                                     v-if="hover"
                                     class="d-flex black darken-2 v-card--reveal"
                                     style="height: 100%"
                                   >
                                   </div>
-                                </v-transition>
+                                </transition>
                               </v-img>
                             </nuxt-link>
                           </v-card>
@@ -109,7 +111,7 @@
                       <v-card slot-scope="{ hover }" class="mx-auto">
                         <nuxt-link :to="'/movie/' + card._id">
                           <v-img :src="'http://image.tmdb.org/t/p/w185' + card.poster" height="320px">
-                            <v-transition class="fade-transition">
+                            <transition class="fade-transition">
                               <div
                                 v-if="hover"
                                 class="d-flex black darken-2 v-card--reveal white--text"
@@ -121,7 +123,7 @@
                                   <p><h3>{{card.description.slice(0,150)}}...</h3></p>
                                 </div>
                             </div>
-                            </v-transition>
+                          </transition>
                           </v-img>
                         </nuxt-link>
                       </v-card>
@@ -209,10 +211,13 @@ export default {
   },
 
   data: () => ({
+    rating: 0,
     show: false,
 
     length: 3,
     onboarding: 0,
+
+    message: '',
 
     comments: [
       { date: 'Today' },
