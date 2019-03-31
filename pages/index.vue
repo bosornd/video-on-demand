@@ -70,7 +70,7 @@
                   <v-container fill-height align-front>
                     <v-layout align-end fill-height>
                       <v-flex>
-                        <span class="headline white--text" v-text="card.title"></span>
+                        <span class="title font-weight-black white--text" v-text="card.title"></span>
                         </v-flex>
                       </v-layout>
                     </v-container>
@@ -78,7 +78,7 @@
                   <v-card-title primary title>
                     <div>
                       <span><h3>{{card.title}} ({{card.released_date}})</h3></span>
-                      <span class="grey--text">{{card.description.slice(0,50)}}...</span><br>
+                      <span class="grey--text">{{card.description.slice(0,30)}}...</span><br>
                     </div>
                   </v-card-title>
                 </v-card>
@@ -158,7 +158,7 @@
                 </v-card>
               </v-hover>
               <div>
-                <span><h2>{{card.title}}</h2></span>
+                <span><h3>{{card.title}}</h3></span>
               </div>
             </v-flex>
           </v-layout>
@@ -233,7 +233,7 @@
                 </v-card>
               </v-hover>
               <div>
-                <span><h2>{{card.title}}</h2></span>
+                <span><h3>{{card.title}}</h3></span>
               </div>
             </v-flex>
           </v-layout>
