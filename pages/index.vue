@@ -1,33 +1,24 @@
 <template>
   <div>
-  <v-carousel hide-delimiters>
-    <v-carousel-item
-      v-for="(item,i) in items"
-      :key="i"
-      :src="item.src"
-    ></v-carousel-item>
-  </v-carousel>
-  <v-tabs
-  centered
-  color="white"
-  icons-and-text
-  >
-    <v-tabs-slider color="white"></v-tabs-slider>
+    <notice></notice>
+    <v-carousel>
+      <v-carousel-item
+        v-for="(item,i) in items"
+        :key="i"
+        :src="item.src"
+      ></v-carousel-item>
+    </v-carousel>
+    <v-tabs
+    centered
+    color="white"
+    icons-and-text
+    >
+      <v-tabs-slider color="white"></v-tabs-slider>
 
-    <v-tab href="#tab-1">
-      무료
-      <v-icon>business_center</v-icon>
-    </v-tab>
-
-    <v-tab href="#tab-2">
-      실시간
-      <v-icon>timer</v-icon>
-    </v-tab>
-
-    <v-tab href="#tab-3">
-      영화
-      <v-icon>movie_creation</v-icon>
-    </v-tab>
+      <v-tab v-for="tab in tabs" :to="tab.to">
+        {{tab.title}}
+        <v-icon>{{tab.icon}}</v-icon>
+      </v-tab>
   </v-tabs>
   <div class="grey lighten-3">
     <v-container>
@@ -73,9 +64,9 @@
         >
           <v-container fluid grid-list-md>
             <v-layout row wrap>
-              <v-flex v-for="card in latest.slice(6*(i-1),6*i)" :key="card.title" xs12 sm6 md4>
-                <v-card height=420px ripple>
-                  <v-img :src="'http://image.tmdb.org/t/p/w185/' + card.poster" height=340px>
+              <v-flex v-for="card in latest.slice(6*(i-1)+6,6*i+6)" :key="card.title" xs12 sm6 md4>
+                <v-card height=420px ripple :to="'/movie/' + card._id">
+                  <v-img :src="card.poster" height=340px>
                   <v-container fill-height align-front>
                     <v-layout align-end fill-height>
                       <v-flex>
@@ -147,8 +138,9 @@
                   class="mx-auto"
                   max-width="400"
                   height="360"
+                  :to="'/movie/' + card._id"
                 >
-                  <v-img :src="'http://image.tmdb.org/t/p/w185/'+card.poster" height=360px>
+                  <v-img :src="card.poster" height=360px>
                     <v-transition class="fade-transition">
                       <div
                         v-if="hover"
@@ -221,8 +213,9 @@
                   class="mx-auto"
                   max-width="400"
                   height="360"
+                  :to="'/movie/' + card._id"
                 >
-                  <v-img :src="'http://image.tmdb.org/t/p/w185/'+card.poster" height=360px>
+                  <v-img :src="card.poster" height=360px>
                     <v-transition class="fade-transition">
                       <div
                         v-if="hover"
@@ -252,25 +245,60 @@
 </template>
 
 <script>
+import notice from '~/components/notice.vue'
 export default {
   data: () => ({
-    length: 5,
+    // length: 5,
     window1: 0,
     window2: 0,
     window3: 0,
     items: [
       {
-        src: 'https://gdurl.com/yHOz'
+        src: 'https://gdurl.com/h6bg'
       },
       {
-        src: 'https://gdurl.com/zQH3'
+        src: 'https://gdurl.com/BV1u'
       },
       {
-        src: 'https://gdurl.com/Sqwc'
+        src: 'https://gdurl.com/LMbi'
+      },
+      {
+        src: 'https://gdurl.com/M8vn'
       }
+    ],
+    tabs: [
+      {
+        title: '무료',
+        icon: 'business_center',
+        to: '/'
+      },
+      {
+        title: '실시간',
+        icon: 'timer',
+        to: '/'
+      },
+      {
+        title: '영화',
+        icon: 'movie_creation',
+        to: '/genre/Action'
+      }
+
     ]
   }),
-
+  components: {
+    notice
+  },
+  computed: {
+    length ({ $vuetify }) {
+      if ($vuetify.breakpoint.xs === true) {
+        return 3
+      } else if ($vuetify.breakpoint.sm === true) {
+        return 4
+      } else if ($vuetify.breakpoint.mdAndUp === true) {
+        return 5
+      }
+    }
+  },
   async asyncData ({ $axios }) {
     const latest = await $axios.$get('/api/movies/latest')
     const ranked = await $axios.$get('/api/movies/ranked')
@@ -282,7 +310,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped="">
 .v-card--reveal {
   align-items: center;
   bottom: 0;
@@ -291,4 +319,5 @@ export default {
   position: absolute;
   width: 100%;
 }
+
 </style>

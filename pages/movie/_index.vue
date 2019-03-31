@@ -5,7 +5,7 @@
         <v-flex xs12 sm5 md5>
           <v-card height>
               <v-card>
-                <v-img :src="'http://image.tmdb.org/t/p/w185/' + movie.poster"></v-img>
+                <v-img :src="movie.poster"></v-img>
               </v-card>
 
               <v-card>
@@ -70,7 +70,7 @@
                         <v-hover>
                           <v-card slot-scope="{ hover }" class="mx-auto">
                             <nuxt-link :to="'/movie/' + card._id">
-                              <v-img :src="'http://image.tmdb.org/t/p/w185/' + card.poster">
+                              <v-img :src="card.poster">
                                 <transition class="fade-transition">
                                   <div
                                     v-if="hover"
@@ -110,7 +110,7 @@
                     <v-hover>
                       <v-card slot-scope="{ hover }" class="mx-auto">
                         <nuxt-link :to="'/movie/' + card._id">
-                          <v-img :src="'http://image.tmdb.org/t/p/w185' + card.poster" height="320px">
+                          <v-img :src="card.poster" height="320px">
                             <transition class="fade-transition">
                               <div
                                 v-if="hover"
