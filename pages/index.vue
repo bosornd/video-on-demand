@@ -141,7 +141,7 @@
                   :to="'/movie/' + card._id"
                 >
                   <v-img :src="card.poster" height=360px>
-                    <v-transition class="fade-transition">
+                    <transition class="fade-transition">
                       <div
                         v-if="hover"
                         class="d-flex black darken-2 v-card--reveal white--text"
@@ -153,7 +153,7 @@
                           <p><h3>{{card.description.slice(0,150)}}...</h3></p>
                         </div>
                       </div>
-                    </v-transition>
+                    </transition>
                   </v-img>
                 </v-card>
               </v-hover>
@@ -216,7 +216,7 @@
                   :to="'/movie/' + card._id"
                 >
                   <v-img :src="card.poster" height=360px>
-                    <v-transition class="fade-transition">
+                    <transition class="fade-transition">
                       <div
                         v-if="hover"
                         class="d-flex black darken-2 v-card--reveal white--text"
@@ -228,7 +228,7 @@
                           <p><h3>{{card.description.slice(0,150)}}...</h3></p>
                         </div>
                       </div>
-                    </v-transition>
+                    </transition>
                   </v-img>
                 </v-card>
               </v-hover>
