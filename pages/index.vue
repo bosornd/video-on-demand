@@ -70,7 +70,7 @@
                   <v-container fill-height align-front>
                     <v-layout align-end fill-height>
                       <v-flex>
-                        <span class="headline white--text" v-text="card.title"></span>
+                        <span class="title font-weight-black white--text" v-text="card.title"></span>
                         </v-flex>
                       </v-layout>
                     </v-container>
@@ -78,7 +78,7 @@
                   <v-card-title primary title>
                     <div>
                       <span><h3>{{card.title}} ({{card.released_date}})</h3></span>
-                      <span class="grey--text">{{card.description.slice(0,50)}}...</span><br>
+                      <span class="grey--text">{{card.description.slice(0,30)}}...</span><br>
                     </div>
                   </v-card-title>
                 </v-card>
@@ -141,7 +141,7 @@
                   :to="'/movie/' + card._id"
                 >
                   <v-img :src="card.poster" height=360px>
-                    <v-transition class="fade-transition">
+                    <transition class="fade-transition">
                       <div
                         v-if="hover"
                         class="d-flex black darken-2 v-card--reveal white--text"
@@ -153,12 +153,12 @@
                           <p><h3>{{card.description.slice(0,150)}}...</h3></p>
                         </div>
                       </div>
-                    </v-transition>
+                    </transition>
                   </v-img>
                 </v-card>
               </v-hover>
               <div>
-                <span><h2>{{card.title}}</h2></span>
+                <span><h3>{{card.title}}</h3></span>
               </div>
             </v-flex>
           </v-layout>
@@ -216,7 +216,7 @@
                   :to="'/movie/' + card._id"
                 >
                   <v-img :src="card.poster" height=360px>
-                    <v-transition class="fade-transition">
+                    <transition class="fade-transition">
                       <div
                         v-if="hover"
                         class="d-flex black darken-2 v-card--reveal white--text"
@@ -228,12 +228,12 @@
                           <p><h3>{{card.description.slice(0,150)}}...</h3></p>
                         </div>
                       </div>
-                    </v-transition>
+                    </transition>
                   </v-img>
                 </v-card>
               </v-hover>
               <div>
-                <span><h2>{{card.title}}</h2></span>
+                <span><h3>{{card.title}}</h3></span>
               </div>
             </v-flex>
           </v-layout>
