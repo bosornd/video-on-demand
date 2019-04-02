@@ -41,7 +41,20 @@ module.exports = {
     }
   },
   serverMiddleware: ['~/api/index.js'],
-  modules: ['@nuxtjs/axios'],
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/auth'
+  ],
   axios: {
+  },
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          // token.accessToken이 아니면, express-jwt에서 오류 발생
+          login: { propertyName: 'token.accessToken' }
+        }
+      }
+    }
   }
 }

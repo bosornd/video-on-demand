@@ -18,9 +18,11 @@ app.use(bodyParser.json());
 // JWT middleware
 const jwt = require('express-jwt')
 const site_secret = require('./config/secret')
+app.use('/auth', require('./auth'))
 
+
+app.use('/users', require('./utils/routeDB')(require('../models/user'), 'id'))
 app.use('/movies', require('./movie'))
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
