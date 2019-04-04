@@ -150,7 +150,7 @@
                         <div class="pa-4">
                           <p><v-icon color="yellow">star</v-icon> {{card.vote_average}}</p>
                           <h2>{{card.title}}</h2>
-                          <p><h3>{{card.description.slice(0,150)}}...</h3></p>
+                          <p><h3>{{card.description.slice(0,100)}}...</h3></p>
                         </div>
                       </div>
                     </transition>
@@ -225,7 +225,7 @@
                         <div class="pa-4">
                           <p><v-icon color="yellow">star</v-icon> {{card.vote_average}}</p>
                           <h2>{{card.title}}</h2>
-                          <p><h3>{{card.description.slice(0,150)}}...</h3></p>
+                          <p><h3>{{card.description.slice(0,100)}}...</h3></p>
                         </div>
                       </div>
                     </transition>
