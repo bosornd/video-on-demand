@@ -4,7 +4,7 @@
       <v-flex xs12>
         <v-text-field v-model="title" prepend-icon="search" label="Title or Description" @keyup.enter="search"></v-text-field>
       </v-flex>
-      <v-flex v-if="searched.length" xs12>searched movies</v-flex>
+      <v-flex v-if="searched.length" xs12>searched movies ({{searched.length}})</v-flex>
       <v-container v-if="searched.length" fluid grid-list-md xs12>
         <v-layout row wrap>
           <v-flex v-for="card in searched" :key="card.title" xs12 sm4 md2>
