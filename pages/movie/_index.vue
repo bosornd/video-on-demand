@@ -10,17 +10,24 @@
 
               <v-card>
                 <v-card-title primary-title>
-                  <div>
-                    <h3 class="headline mb-0">{{movie.title}}</h3>
-                    <v-icon color="yellow accent-4">star</v-icon>
-                    &nbsp;{{movie.vote_average}}
-                    <br><br>
-                    <div style="float:left;">give rating</div>
-                    <div style="float:left;"> <v-rating v-model="rating"
-                    background-color="grey"
-                    color="red" small></v-rating></div>
-                  </div>
+                  <h3 class="headline mb-0">{{movie.title}}</h3>
                 </v-card-title>
+
+                <v-card-actions class="pa-3">
+                  <v-icon color="yellow accent-4" size="19">star</v-icon>
+                  {{movie.vote_average}}
+                  &nbsp;&nbsp;give rating
+                  <v-rating
+                    v-model="rating"
+                    background-color="grey"
+                    color="red"
+                    dense
+                    half-increments
+                    size="18"
+                  ></v-rating>
+                  <v-spacer></v-spacer>
+                  <v-btn color="yellow accent-4" depressed><h3>watch</h3></v-btn>
+                </v-card-actions>
               </v-card>
 
               <v-card color="grey lighten-3">
@@ -46,6 +53,7 @@
                     {{movie.description}}
                   </v-card-text>
                 </v-slide-y-transition>
+
               </v-card>
             </v-card>
           </v-flex>
@@ -70,7 +78,7 @@
                         <v-hover>
                           <v-card slot-scope="{ hover }" class="mx-auto">
                             <nuxt-link :to="'/movie/' + card._id">
-                              <v-img :src="card.poster">
+                              <v-img :src="card.poster" :aspect-ratio="10/16">
                                 <transition class="fade-transition">
                                   <div
                                     v-if="hover"
@@ -83,9 +91,7 @@
                             </nuxt-link>
                           </v-card>
                         </v-hover>
-                        <v-card-text>
-                          {{card.title}}
-                        </v-card-text>
+                        <div class="body-1">{{card.title}}</div>
                       </v-flex>
                     </v-layout>
                   </v-container>
@@ -120,10 +126,10 @@
                                 <div class="pa-4">
                                   <p><v-icon color="yellow">star</v-icon> {{card.vote_average}}</p>
                                   <h2>{{card.title}}</h2>
-                                  <p><h3>{{card.description.slice(0,150)}}...</h3></p>
+                                  <p><h4>{{card.description.slice(0,100)}}...</h4></p>
                                 </div>
-                            </div>
-                          </transition>
+                              </div>
+                            </transition>
                           </v-img>
                         </nuxt-link>
                       </v-card>
@@ -221,15 +227,11 @@ export default {
 
     comments: [
       { date: 'Today' },
-      { name: 'merc**', text: 'comment' },
+      { name: 'merc**', text: '좋은 영화네요' },
       { divider: true },
-      { name: 'Summer BBQ', text: 'asd' },
+      { name: 'Summ***', text: '극장에서 봤어야 할 영화네요! 감동!' },
       { divider: true },
-      { name: 'Oui oui', text: 'fdfdfdf' },
-      { divider: true },
-      { name: 'Birthday gift', text: 'ghghghg' },
-      { divider: true },
-      { name: 'Recipe', text: 'ew et wtqwt wtwet qt e' }
+      { name: 'Ou***', text: '꼭 보세요. 굿~!' }
     ]
   }),
 
