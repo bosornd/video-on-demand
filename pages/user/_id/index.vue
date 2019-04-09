@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- <notice></notice> -->
     <v-container grid-list-lg>
       <v-layout row wrap>
         <v-flex xs12 sm12 md 12>
@@ -26,9 +27,6 @@
             readonly
           ></v-text-field>
         </v-flex>
-
-
-
         <v-flex xs10 sm10 md10>
           <h2>내가 본 영화</h2>
         </v-flex>
@@ -39,7 +37,7 @@
         <v-flex xs12 sm12 md12>
           <v-layout row wrap >
             <v-flex xs12 sm4 md3 v-for="movie in movies()">
-              <v-card height=420px ripple :to="'/movie/' + movie._id">
+              <v-card height=420px ripple :to="'/movie/' + movie.id">
                 <v-img :src="movie.poster" height=340px>
                 </v-img>
                 <v-card-title primary title>
@@ -72,20 +70,18 @@ export default {
   methods: {
     movies () {
       if (this.more === false) {
-        var arr = this.latest.slice(0, 4)
+        var arr = this.user.movies.slice(0, 4)
         return arr
       } else if (this.more === true) {
-        return this.latest.slice(0, 30)
+        return this.user.movies.slice(0, 30)
       }
     }
   },
   async asyncData ({ route, $axios, redirect }) {
-    const user = await $axios.$get('/api/users/' + route.params.id, 'id')
-    const latest = await $axios.$get('/api/movies/latest')
+    var user = await $axios.$get('/api/users/' + route.params.id, 'id')
 
     return {
-      user,
-      latest
+      user
     }
   }
 

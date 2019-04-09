@@ -7,6 +7,11 @@ var userSchema = new mongoose.Schema({
   name: { type: String, index: true, required: true }, // realname
   email: { type: String, unique: true, required: true },
   address: { type: String },
+  movies: [{
+      id: { type: String, required: true },
+      title: {type: String, required: true },
+      poster: {type: String, required: true }
+  }],
   phone: { type: String }
 });
 

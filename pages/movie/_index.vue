@@ -26,7 +26,7 @@
                     size="18"
                   ></v-rating>
                   <v-spacer></v-spacer>
-                  <v-btn color="yellow accent-4" depressed><h3>watch</h3></v-btn>
+                  <v-btn color="yellow accent-4" depressed @click="watch($auth)"><h3>watch</h3></v-btn>
                 </v-card-actions>
               </v-card>
 
@@ -205,6 +205,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   computed: {
     binding () {
@@ -234,7 +235,18 @@ export default {
       { name: 'Ou***', text: '꼭 보세요. 굿~!' }
     ]
   }),
-
+  methods: {
+    watch (auth, $axios) {
+      console.log(auth.user)
+      axios.put('/api/users/' + auth.user.id, { $push: { 'movies': { id: this.movie._id, title: this.movie.title, poster: this.movie.poster } } })
+        .then((r) => {
+          console.log('watch success')
+        })
+        .catch((e) => {
+          console.log('watch error')
+        })
+    }
+  },
   async asyncData ({ params, $axios }) {
     const movie = await $axios.$get('/api/movies/' + params.index)
     const latest = await $axios.$get('/api/movies/latest?genres.name=' + 'Drama')

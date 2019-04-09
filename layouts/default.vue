@@ -132,7 +132,7 @@
                       </v-flex>
                       <v-flex xs12>
                         <small>*indicates required field</small>
-                        <v-btn block color="primary" @click="register">Register for CoalaSoftware</v-btn>
+                        <v-btn block color="primary" @click="register">Register for oksusu</v-btn>
                       </v-flex>
                     </v-layout>
                   </v-container>
