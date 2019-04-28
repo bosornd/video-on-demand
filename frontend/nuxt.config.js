@@ -40,12 +40,16 @@ module.exports = {
       }
     }
   },
-  modules: ['@nuxtjs/axios'],
+  modules: ['@nuxtjs/axios', '@nuxtjs/auth'],
   axios: {
     proxy: true
   },
   proxy: {
     '/api/movies': { target: `http://${process.env.MOVIE_DB_API_SERVICE_HOST}:${process.env.MOVIE_DB_API_SERVICE_PORT}`,
-                   pathRewrite: { '^/api/movies' : '/' }  }
+                   pathRewrite: { '^/api/movies' : '/' }  },
+    '/api/auth': { target: `http://${process.env.USER_DB_API_SERVICE_HOST}:${process.env.USER_DB_API_SERVICE_PORT}`,
+                  pathRewrite: { '^/api/auth' : '/' }  },
+    '/api/users': { target: `http://${process.env.USER_DB_API_SERVICE_HOST}:${process.env.USER_DB_API_SERVICE_PORT}`,
+                  pathRewrite: { '^/api/users' : '/users' }  }
   }
 }

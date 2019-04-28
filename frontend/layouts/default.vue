@@ -45,7 +45,7 @@
     <v-toolbar class="yellow accent-4" fixed app :clipped-left="clipped">
       <v-toolbar-side-icon @click="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-items class="hidden-sm-and-down">
-       <v-btn flat @click="toMypage($auth)"><h3>MY</h3></v-btn>
+       <v-btn flat @click="toMypage()"><h3>MY</h3></v-btn>
       </v-toolbar-items>
       <v-spacer></v-spacer>
       <nuxt-link :to="'/'" class="link"><v-toolbar-title><b><h2>{{title}}</h2></b></v-toolbar-title></nuxt-link>
@@ -286,9 +286,9 @@
             })
         }
       },
-      toMypage (auth) {
-        if (auth.loggedIn) {
-          this.$router.push('/user/' + auth.user.id)
+      toMypage () {
+        if (this.$auth.loggedIn) {
+          this.$router.push('/user/' + this.$auth.user.id)
         } else {
           this.loginDialog = true
         }
@@ -296,7 +296,6 @@
     }
 
   }
-</script>
 </script>
 
 <style>
