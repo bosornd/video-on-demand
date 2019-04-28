@@ -4,8 +4,8 @@ const PORT = 8080;
 
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://' + process.env.MOVIE_DB_SERVICE_HOST + '/vod',
-                 { promiseLibrary: require('bluebird'), useNewUrlParser: true })
+const db_server = require('./config/db')
+mongoose.connect(db_server, { promiseLibrary: require('bluebird'), useNewUrlParser: true })
   .then(() =>  console.log('connection succesful'))
   .catch((err) => console.error(err));
 
@@ -18,10 +18,7 @@ var app = express();
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
-
-// JWT middleware
 app.use('/', require('./api/movie'));
-//app.use('/', jwt({secret: 'nuxt-book'}), require('./api/book'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
