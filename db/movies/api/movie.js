@@ -37,7 +37,7 @@ router.get('/latest', function (req, res) {
 router.get('/ranked', function (req, res) {
   db.find(req.query)
   .limit(100)
-  .sort({vote_average:-1})
+  .sort({count:-1})
   .exec((err, result) => {
     if (err) {
       return res.status(500).json(err)

@@ -15,7 +15,11 @@ var MovieSchema = new mongoose.Schema({
   poster: String,
   released_date: String,
   running_time: Number,
-  vote_average: Number
+  vote_average: Number,
+  count: {
+  type: Number,
+  default: 0
+  }
 });
 
 MovieSchema.index({title:'text', description:'text'})

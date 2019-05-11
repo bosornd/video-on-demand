@@ -1,18 +1,15 @@
 <template>
   <v-container fluid grid-list-md>
     <v-layout v-bind="binding" align-center justify-center full-height row wrap pa-2>
-
         <v-flex xs12 sm5 md5>
           <v-card height>
               <v-card>
                 <v-img :src="movie.poster"></v-img>
               </v-card>
-
               <v-card>
                 <v-card-title primary-title>
                   <h3 class="headline mb-0">{{movie.title}}</h3>
                 </v-card-title>
-
                 <v-card-actions class="pa-3">
                   <v-icon color="yellow accent-4" size="19">star</v-icon>
                   {{movie.vote_average}}
@@ -29,7 +26,6 @@
                   <v-btn color="yellow accent-4" depressed @click="watch($auth)"><h3>watch</h3></v-btn>
                 </v-card-actions>
               </v-card>
-
               <v-card color="grey lighten-3">
                 <v-card-title>
                   <div>
@@ -39,7 +35,6 @@
                     |<strong class="ma-2">Running Time</strong>{{movie.running_time}} min
                   </div>
                 </v-card-title>
-
                 <v-card-actions>
                 <v-spacer></v-spacer>
                   <strong>movie plot</strong>
@@ -47,17 +42,14 @@
                      <v-icon>{{ show ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</v-icon>
                     </v-btn>
                 </v-card-actions>
-
                <v-slide-y-transition>
                   <v-card-text v-show="show">
                     {{movie.description}}
                   </v-card-text>
                 </v-slide-y-transition>
-
               </v-card>
             </v-card>
           </v-flex>
-
 
         <v-flex xs12 sm3 md3>
           <v-card height>
@@ -100,10 +92,8 @@
             </v-card>
         </v-flex>
       </v-layout>
-
-
     <br><br>
-    <v-layout align-center justify-center row wrap pa-2>
+    <!-- <v-layout align-center justify-center row wrap pa-2>
       <v-flex xs12 sm8 md8>
         <div><h3 class="headline mb-0">Recommended Movies</h3></div>
       </v-flex>
@@ -165,7 +155,7 @@
             </v-card-actions>
           </v-card>
       </v-flex>
-    </v-layout>
+    </v-layout> -->
 
   <br>
   <v-form>
@@ -220,12 +210,9 @@ export default {
   data: () => ({
     rating: 0,
     show: false,
-
     length: 3,
     onboarding: 0,
-
     message: '',
-
     comments: [
       { date: 'Today' },
       { name: 'merc**', text: '좋은 영화네요' },
@@ -249,14 +236,13 @@ export default {
   },
   async asyncData ({ params, $axios }) {
     const movie = await $axios.$get('/api/movies/' + params.index)
+    $axios.$put('/api/movies/' + params.index, { $set: { 'count': movie.count + 1 } })
     const latest = await $axios.$get('/api/movies/latest?genres.name=' + 'Drama')
-    const ranked = await $axios.$get('/api/movies/ranked?genres.name=' + 'Drama')
-
-    console.log(movie)
+    // const ranked = await $axios.$get('/api/movies/ranked?genres.name=' + 'Drama')
     return {
       movie,
-      latest,
-      ranked
+      latest
+      // ranked
     }
   }
 }
