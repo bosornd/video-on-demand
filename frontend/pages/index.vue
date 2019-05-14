@@ -268,14 +268,14 @@ export default {
     ],
     tabs: [
       {
-        title: '무료',
+        title: '랭킹',
         icon: 'business_center',
-        to: '/'
+        to: '/ranking'
       },
       {
         title: '실시간',
         icon: 'timer',
-        to: '/'
+        to: '/genre/Action'
       },
       {
         title: '영화',

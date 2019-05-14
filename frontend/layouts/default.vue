@@ -210,7 +210,8 @@
           { icon: 'filter_4', title: 'Comedy', to: '/genre/Comedy' },
           { icon: 'filter_5', title: 'Drama', to: '/genre/Drama' },
           { icon: 'filter_6', title: 'Family', to: '/genre/Family' },
-          { icon: 'filter_7', title: 'Romance', to: '/genre/Romance' }
+          { icon: 'filter_7', title: 'Romance', to: '/genre/Romance' },
+          { icon: 'filter_8', title: 'Ranking', to: '/ranking'}
         ],
         links: [
           '홈',

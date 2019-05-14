@@ -4,7 +4,7 @@
     <v-container grid-list-lg>
       <v-layout justify-center row wrap>
         <v-flex
-          v-for="(card) in ranked.slice(0, 20)"
+          v-for="(card) in ranked.slice(0, 50)"
           :key="card.title"
           xs6 sm4 md3
         >
