@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vod-frontend-ranking
+  labels:
+    app: vod-frontend-ranking
+spec:
+  selector:
+    matchLabels:
+      app: vod-frontend-ranking
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: vod-frontend-ranking
+    spec:
+      containers:
+      - name: vod-frontend-ranking
+        image: vod-frontend-ranking:v2
+        ports:
+        - containerPort: 3000
+        imagePullPolicy: Never
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vod-frontend-ranking
+  annotations:
+    getambassador.io/config: |
+      ---
+      apiVersion: ambassador/v0
+      kind:  Mapping
+      name:  vod_frontend_ranking_mapping
+      prefix: /ranking/
+      service: vod-frontend-ranking:80
+  labels:
+    app: vod-frontend-ranking
+spec:
+  ports:
+  - port: 80
+  selector:
+    app: vod-frontend-ranking
+  type: LoadBalancer

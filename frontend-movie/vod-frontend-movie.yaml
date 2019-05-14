@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vod-frontend-movie
+  labels:
+    app: vod-frontend-movie
+spec:
+  selector:
+    matchLabels:
+      app: vod-frontend-movie
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: vod-frontend-movie
+    spec:
+      containers:
+      - name: vod-frontend-movie
+        image: vod-frontend-movie:v1
+        ports:
+        - containerPort: 3000
+        imagePullPolicy: Never
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vod-frontend-movie
+  labels:
+    app: vod-frontend-movie
+spec:
+  ports:
+  - port: 3000
+  selector:
+    app: vod-frontend-movie
+  type: LoadBalancer

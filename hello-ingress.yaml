@@ -1,0 +1,12 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hello-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /ranking/*
+        backend:
+          serviceName: vod-frontend-ranking
+          servicePort: 3000
