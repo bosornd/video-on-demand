@@ -16,20 +16,28 @@ spec:
     spec:
       containers:
       - name: vod-frontend-movie
-        image: vod-frontend-movie:v1
+        image: vod-frontend-movie:v2
         ports:
-        - containerPort: 3000
+        - containerPort: 80
         imagePullPolicy: Never
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: vod-frontend-movie
+  annotations:
+    getambassador.io/config: |
+      ---
+      apiVersion: ambassador/v0
+      kind:  Mapping
+      name:  vod_frontend_movie_mapping
+      prefix: /movie/
+      service: vod-frontend-movie:80
   labels:
     app: vod-frontend-movie
 spec:
   ports:
-  - port: 3000
+  - port: 80
   selector:
     app: vod-frontend-movie
   type: LoadBalancer

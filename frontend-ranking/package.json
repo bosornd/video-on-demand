@@ -7,9 +7,16 @@
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
-    "start": "NUXT_HOST=0.0.0.0 nuxt start",
+    "start": "nuxt start",
     "generate": "nuxt generate"
   },
+  "config": {
+    "nuxt": {
+      "host": "0.0.0.0",
+      "port": "80"
+    }
+  },
+
   "dependencies": {
     "@nuxtjs/auth": "^4.5.3",
     "@nuxtjs/axios": "^5.3.6",
