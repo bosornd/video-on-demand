@@ -182,8 +182,7 @@
         drawer: false,
         clipped: true,
         miniVariant: false,
-        title: 'oksusu',
-
+        title: 'oksusu-movie',
         registerDialog: false,
         loginDialog: false,
         valid: true,

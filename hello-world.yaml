@@ -10,7 +10,7 @@ metadata:
       kind:  Mapping
       name:  hello_world_mapping
       prefix: /hello-world/
-      service: hello-world
+      service: hello-world:80
 spec:
   selector:
     app: hello-world

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: vod-frontend-ranking
-        image: vod-frontend-ranking:v3
+        image: vod-frontend-ranking:v1
         ports:
         - containerPort: 80
         imagePullPolicy: Never
@@ -40,4 +40,4 @@ spec:
   - port: 80
   selector:
     app: vod-frontend-ranking
-  type: LoadBalancer
+  type: NodePort
