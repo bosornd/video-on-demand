@@ -23,6 +23,6 @@ arch1
    
 5-2. build & run vod-frontend-ranking server on kubernetes
    $ cd frontend-ranking-movie
-   $ docker build -t vod-frontend-ranking-movie:v1 .
-   $ kubectl apply -f vod-frontend-ranking-movie.yaml   
+   $ docker build -t vod-frontend-movie:v1 .
+   $ kubectl apply -f vod-frontend-movie.yaml   
 ```
