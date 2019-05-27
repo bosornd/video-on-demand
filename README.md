@@ -11,8 +11,18 @@ arch1
   $ docker build -t user-db-api:v1 .
   $ kubectl apply -f user-db-api.yaml
 
-2. build & run vod-frontend server on kubernetes
-   $ cd frontend
-   $ docker build -t vod-frontend:v1 .
-   $ kubectl apply -f vod-frontend.yaml
+3. kubectl apply -f https://getambassador.io/yaml/ambassador/ambassador-rbac.yaml
+
+4. kubectl apply -f ambassador-service.yaml
+
+
+5-1. build & run vod-frontend-ranking server on kubernetes
+   $ cd frontend-ranking
+   $ docker build -t vod-frontend-ranking:v1 .
+   $ kubectl apply -f vod-frontend-ranking.yaml
+   
+5-2. build & run vod-frontend-ranking server on kubernetes
+   $ cd frontend-ranking-movie
+   $ docker build -t vod-frontend-ranking-movie:v1 .
+   $ kubectl apply -f vod-frontend-ranking-movie.yaml   
 ```
