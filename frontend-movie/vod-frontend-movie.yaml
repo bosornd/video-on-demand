@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: vod-frontend-movie
-        image: vod-frontend-movie:v5
+        image: vod-frontend-movie:v1
         ports:
         - containerPort: 80
         imagePullPolicy: Never
