@@ -40,4 +40,4 @@ spec:
   - port: 80
   selector:
     app: vod-frontend-ranking
-  type: NodePort
+  type: LoadBalancer

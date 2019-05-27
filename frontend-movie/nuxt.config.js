@@ -26,6 +26,9 @@ module.exports = {
   build: {
     extractCSS: true,
     extend (config, ctx) {
+      if(!ctx.isDev) {
+      config.output.publicPath = '/movie/_nuxt/'
+      }
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
