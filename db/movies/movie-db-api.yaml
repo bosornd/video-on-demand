@@ -30,7 +30,7 @@ spec:
           claimName: movie-db-pvc
       - name: host
         hostPath:
-          path: /c/Users/drajin/minikube/movie-db
+          path: /d/minikube/movie-db
 ---
 apiVersion: v1
 kind: Service
