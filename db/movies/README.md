@@ -19,6 +19,7 @@ ssh로 minikube node에 접근한다.
 $ minikube ssh
 다음 방법으로 /d에 마운트 한다.
 (yourname, yourpassword는 Windows Login ID와 암호이다)
+# sudo mkdir /d
 # sudo mount -t cifs -o "user=yourname,domain=WORKGROUP,password=yourpassword" //192.168.22.10/shared_folder /d
 
 ```
